@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA,MACC,eAAgB,CAChB,SAAU,CACV,iBACD,CAJA,MACC,eACD,CAEA,OACC,WAAY,CACZ,gBACD","file":"main.b93fae71.chunk.css","sourcesContent":[".card {\n\tmin-width: 300px;\n}\n\n.thumb {\n\twidth: 160px;\n\tmargin: 10px auto;\n}\n"]}
