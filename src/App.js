@@ -8,6 +8,7 @@ import Search from "./components/search";
 
 class App extends Component {
 	state = {
+		data: [],
 		employees: [],
 		sort: "",
 		search: "",
@@ -27,34 +28,39 @@ class App extends Component {
 						location: result.location.state,
 					};
 				});
-				this.setState({ employees: data });
+				this.setState({ employees: data, data: data });
 			})
 			.catch((err) => console.log(err));
 	}
 
 	// sort employee cards by user selected sort criteria
-	sortBy = (event) => {
+	handleSort = (event) => {
 		const criteria = event.target.value;
 		this.setState({ sort: criteria });
+		this.sortBy(criteria);
+	};
 
+	sortBy = (criteria, employees = this.state.employees) => {
+		console.log("criteria2: ", criteria);
 		if (criteria === "first") {
-			const sorted = this.state.employees.sort((a, b) => a.firstname.localeCompare(b.firstname));
+			const sorted = employees.sort((a, b) => a.firstname.localeCompare(b.firstname));
 			this.setState({ employees: sorted });
 		} else if (criteria === "last") {
-			const sorted = this.state.employees.sort((a, b) => a.lastname.localeCompare(b.lastname));
+			const sorted = employees.sort((a, b) => a.lastname.localeCompare(b.lastname));
 			this.setState({ employees: sorted });
 		} else if (criteria === "location") {
-			const sorted = this.state.employees.sort((a, b) => a.location.localeCompare(b.location));
+			const sorted = employees.sort((a, b) => a.location.localeCompare(b.location));
 			this.setState({ employees: sorted });
 		}
+		console.log("sorted state: ", employees);
 	};
 
 	// filter employees by search input
 	searchBy = (event) => {
 		const value = event.target.value;
 		this.setState({ search: value });
-
-		const filtered = this.state.employees.filter(
+		console.log("value: ", value);
+		const filtered = this.state.data.filter(
 			(employee) =>
 				employee.firstname.toLowerCase().includes(value.toLowerCase()) ||
 				employee.lastname.toLowerCase().includes(value.toLowerCase()) ||
@@ -62,17 +68,20 @@ class App extends Component {
 				employee.email.toLowerCase().includes(value.toLowerCase()) ||
 				employee.location.toLowerCase().includes(value.toLowerCase())
 		);
-		this.setState({ employees: filtered });
+		console.log("filtered: ", filtered);
+		this.sortBy(this.state.sort, filtered);
 	};
 
 	render() {
 		return (
-			<div>
+			<>
 				<Header />
 				<div className="container">
 					<h1>Employee Directory</h1>
-					<Sort search={this.state.sort} sortBy={this.sortBy} />
-					<Search search={this.state.search} searchBy={this.searchBy} />
+					<form className="form-inline d-flex justify-content-between my-3">
+						<Sort search={this.state.sort} sortBy={this.handleSort} />
+						<Search search={this.state.search} searchBy={this.searchBy} />
+					</form>
 					<div className="card-deck">
 						{this.state.employees.map((employee, index) => (
 							<Employee
@@ -87,7 +96,7 @@ class App extends Component {
 						))}
 					</div>
 				</div>
-			</div>
+			</>
 		);
 	}
 }
