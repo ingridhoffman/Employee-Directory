@@ -3,11 +3,13 @@ import "./App.css";
 import Header from "./components/pageHeader";
 import Employee from "./components/employeeCard";
 import API from "./utils/api";
+import Sort from "./components/sort";
 import Search from "./components/search";
 
 class App extends Component {
 	state = {
 		employees: [],
+		sort: "",
 		search: "",
 	};
 
@@ -29,6 +31,23 @@ class App extends Component {
 			})
 			.catch((err) => console.log(err));
 	}
+
+	// sort employee cards by user selected sort criteria
+	sortBy = (event) => {
+		const criteria = event.target.value;
+		this.setState({ sort: criteria });
+
+		if (criteria === "first") {
+			const sorted = this.state.employees.sort((a, b) => a.firstname.localeCompare(b.firstname));
+			this.setState({ employees: sorted });
+		} else if (criteria === "last") {
+			const sorted = this.state.employees.sort((a, b) => a.lastname.localeCompare(b.lastname));
+			this.setState({ employees: sorted });
+		} else if (criteria === "location") {
+			const sorted = this.state.employees.sort((a, b) => a.location.localeCompare(b.location));
+			this.setState({ employees: sorted });
+		}
+	};
 
 	// filter employees by search input
 	searchBy = (event) => {
@@ -52,6 +71,7 @@ class App extends Component {
 				<Header />
 				<div className="container">
 					<h1>Employee Directory</h1>
+					<Sort search={this.state.sort} sortBy={this.sortBy} />
 					<Search search={this.state.search} searchBy={this.searchBy} />
 					<div className="card-deck">
 						{this.state.employees.map((employee, index) => (
