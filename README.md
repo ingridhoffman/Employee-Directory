@@ -41,7 +41,7 @@ Install MongoDB (if you do not have it already) and start the Mongo shell - for 
 Start the application:
 
 ```
-npm run start
+npm start
 ```
 
 ## Web Browser
