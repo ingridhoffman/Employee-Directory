@@ -1,6 +1,8 @@
 # Employee-Directory
 
-Employee directory that can be viewed, sorted, and filtered by a user. Built on React framework.
+A simple browser based employee directory that can be viewed, sorted, and filtered by a user. Built on React framework.
+
+<img src="src/images/localhost_3000_.png" alt="app screenshot" width=90% />
 
 # User Story
 
@@ -20,7 +22,7 @@ THEN a table of employees should render
 WHEN the user selects a sort option
 THEN the table will display the employees sorted by the selected category
 
-WHEN the user selects a filter option
+WHEN the user types in the search field
 THEN the table will display only the employees meeting the filter criteria
 ```
 
@@ -36,8 +38,6 @@ Install node dependencies:
 npm install
 ```
 
-Install MongoDB (if you do not have it already) and start the Mongo shell - for assistance visit: https://docs.mongodb.com/manual/installation/
-
 Start the application:
 
 ```
@@ -47,6 +47,7 @@ npm start
 ## Web Browser
 
 To run a demo of this application, visit:
+https://ingridhoffman.github.io/Employee-Directory/
 
 # License
 
