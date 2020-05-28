@@ -9,8 +9,11 @@ function Employee(props) {
 				<h3 className="card-title">
 					{props.firstname} {props.lastname}
 				</h3>
-				<p className="card-text">{props.phone}</p>
-				<p className="card-text">{props.email}</p>
+				<p className="card-text">
+					{props.phone}
+					<br />
+					{props.email}
+				</p>
 			</div>
 			<div className="card-footer text-muted">{props.location}</div>
 		</div>

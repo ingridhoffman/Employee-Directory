@@ -77,7 +77,6 @@ class App extends Component {
 			<>
 				<Header />
 				<div className="container">
-					<h1>Employee Directory</h1>
 					<form className="form-inline d-flex justify-content-between my-3">
 						<Sort search={this.state.sort} sortBy={this.handleSort} />
 						<Search search={this.state.search} searchBy={this.searchBy} />
