@@ -1,10 +1,10 @@
 # Employee-Directory
 
-A simple browser based employee directory that can be viewed, sorted, and filtered by a user. Built on React framework.
+A simple browser based employee directory that can be viewed, sorted, and filtered by a user.
 
 <img src="src/images/localhost_3000_.png" alt="app screenshot" width=90% />
 
-# User Story
+### User Story
 
 ```
 AS A user
@@ -26,9 +26,20 @@ WHEN the user types in the search field
 THEN the table will display only the employees meeting the filter criteria
 ```
 
+### Technologies
+
+- HTML
+- CSS and Bootstrap for repsonsive design
+- React.js framework
+- Random User API: https://randomuser.me/
+
 # Application Usage
 
-## Node.js
+### Browser
+
+https://ingridhoffman.github.io/Employee-Directory/
+
+### Install
 
 Download application package and open folder in Node.js
 
@@ -41,13 +52,8 @@ npm install
 Start the application:
 
 ```
-npm start
+npm run start
 ```
-
-## Web Browser
-
-To run a demo of this application, visit:
-https://ingridhoffman.github.io/Employee-Directory/
 
 # License
 
