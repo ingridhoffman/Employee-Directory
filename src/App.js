@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import Header from "./components/pageHeader";
 import Employee from "./components/employeeCard";
@@ -68,7 +70,11 @@ class App extends Component {
 				employee.location.toLowerCase().includes(value.toLowerCase())
 		);
 		console.log("filtered: ", filtered);
-		this.sortBy(this.state.sort, filtered);
+		if (this.state.sort === "") {
+			this.setState({ employees: filtered });
+		} else {
+			this.sortBy(this.state.sort, filtered);
+		}
 	};
 
 	render() {
